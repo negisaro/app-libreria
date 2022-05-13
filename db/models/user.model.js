@@ -1,21 +1,13 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const AUTOR_TABLE = 'autor';
+const USER_TABLE = 'users';
 
-const AutorSchema = {
+const UserSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER,
-  },
-  nombre:{
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  apellido:{
-    allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER
   },
   email: {
     allowNull: false,
@@ -24,17 +16,17 @@ const AutorSchema = {
   },
   password: {
     allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
   },
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
-    defaultValue: Sequelize.NOW,
-  },
-};
+    defaultValue: Sequelize.NOW
+  }
+}
 
-class Autor extends Model {
+class User extends Model {
   static associate() {
     // associate
   }
@@ -42,11 +34,12 @@ class Autor extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: AUTOR_TABLE,
-      modelName: 'Autor',
-      timestamps: false,
-    };
+      tableName: USER_TABLE,
+      modelName: 'User',
+      timestamps: false
+    }
   }
 }
 
-module.exports = { AUTOR_TABLE, AutorSchema, Autor };
+
+module.exports = { USER_TABLE, UserSchema, User }
