@@ -22,10 +22,6 @@ app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log('Puerto: ' + port);
-});
-
 app.listen(config.port, config.dbHost, () => {
   console.log(`App listening on http://${config.dbHost}:${config.port}`);
 });
