@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const config = require('./config/config');
+const { config } = require('./config/config');
 const app = express();
 const routeApi = require('./router/index');
 const {
@@ -33,6 +33,8 @@ app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-app.listen(config.port, config.dbHost, () => {
-  console.log(`App listening on http://${config.dbHost}:${config.port}`);
+app.listen(config.port, config.dbHost, config.dbUrl, () => {
+  console.log(
+    `App listening on http://${config.dbHost}:${config.port}:${config.dbUrl}`
+  );
 });
