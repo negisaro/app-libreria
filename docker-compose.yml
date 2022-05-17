@@ -5,7 +5,7 @@ services:
     image: postgres:13
     environment:
       - POSTGRES_DB=libreria_buho
-      - POSTGRES_USER=root
+      - POSTGRES_USER=negisaro
       - POSTGRES_PASSWORD=admin123
     ports:
       - 5432:5432
