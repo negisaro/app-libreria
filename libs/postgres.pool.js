@@ -6,8 +6,8 @@ const options = {};
 
 if (config.isProd) {
   options.connectionString = config.dbUrl;
-  options.ssl =  {
-    rejectUnauthorized: false
+  options.ssl = {
+    rejectUnauthorized: false,
   };
 } else {
   const USER = encodeURIComponent(config.dbUser);
@@ -15,6 +15,7 @@ if (config.isProd) {
   const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
   options.connectionString = URI;
 }
+console.log(URI);
 
 const pool = new Pool(options);
 

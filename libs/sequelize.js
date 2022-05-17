@@ -3,10 +3,20 @@ const { Sequelize } = require('sequelize');
 const { config } = require('./../config/config');
 const setupModels = require('./../db/models');
 
-const sequelize = new Sequelize(config.dbUrl, {
+const options = {
   dialect: 'postgres',
-  logging: console.log,
-});
+  logging: console.log,//config.isProd ? false : true,
+}
+
+if (config.isProd) {
+  options.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
+}
+
+const sequelize = new Sequelize(config.dbUrl, options);
 
 setupModels(sequelize);
 
